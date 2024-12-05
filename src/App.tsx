@@ -1,4 +1,6 @@
 import React, { useRef, useState } from 'react';
+import { getAuth, GoogleAuthProvider } from  'firebase/auth';
+import { signInWithPopup, User } from 'firebase/auth';
 /* import logo from './logo.svg'; */
 /* import './App.css'; */
 
@@ -6,6 +8,9 @@ const App: React.FC = () => {
   // State to keep track of the count using useState as a hook
   const [count, setCount] = useState<number>(0);
   const emojiRef = useRef<HTMLButtonElement>(null);
+  const [user, setUser] = useState<User | null>(null);
+
+
 
   return (
   
@@ -26,7 +31,6 @@ const App: React.FC = () => {
           className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700"
           onClick={() => {
             setCount(count + 1);
-          emojiRef.current?.click();
         } 
         }
         >
